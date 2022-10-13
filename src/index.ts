@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     console.log('Loaded')
-    document.getElementById('username')?.addEventListener('change', (e) : void => {
+    document.getElementById('username')?.addEventListener('change', (e) => {
         let username = e.currentTarget as HTMLInputElement;
         let usernameHiba = document.getElementById('usernameHiba') as HTMLLabelElement;
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (username.value.includes("&") || username.value.includes("=") || username.value.includes("_") || username.value.includes("'") || username.value.includes("-") 
             || username.value.includes("+") || username.value.includes(",") || username.value.includes("<") || username.value.includes(">") || username.value.includes('.'))
         {
-           console.log('username hiba');
+           console.log('username hiba (tiltott karakter)');
            document.getElementById('usernameHiba')!.innerHTML = 'Tiltott karaktert használsz';
 
            username.style.color = "Red";
@@ -24,10 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
             username.style.color = "Red";
             usernameHiba.innerText = '6-30 karakter hosszúságúnak kell lennie';
             usernameHiba.style.color = "Red"; 
+            console.log('username hiba (rovid/hosszu)');
         }
-        /*
-        else if(isNaN(username.value.charAt(0))) {}
-        */
+        
+        else if(/[0-9]/.test(username.value.charAt(0)))
+        {
+            username.style.color = "Red";
+            usernameHiba.innerText = 'Felhasználónév nem kezdőthet számmal';
+            usernameHiba.style.color = "Red";
+            console.log('username hiba (szammalkezdodik)'); 
+        } 
         else
         {
             usernameHiba.innerText = '';
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('email')?.addEventListener('change', (e) => {
         let email = e.currentTarget as HTMLInputElement;
-        
+
     });
 
 
