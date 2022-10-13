@@ -19,23 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
            usernameHiba.innerText = 'Tiltott karaktert használsz';
            usernameHiba.style.color = "Red"; 
         }
-        else if(username.value.length < 6 || username.value.length > 30)
+        else if(username.value.length < 6  || username.value.length > 30)
         {
             username.style.color = "Red";
             usernameHiba.innerText = '6-30 karakter hosszúságúnak kell lennie';
             usernameHiba.style.color = "Red"; 
         }
-        else if(isNaN(username.value.charAt(0)))
-        {
-            username.style.color = "Red";
-            usernameHiba.innerText = '6-30 karakter hosszúságúnak kell lennie';
-            usernameHiba.style.color = "Red"; 
-        }
+        /*
+        else if(isNaN(username.value.charAt(0))) {}
+        */
         else
         {
             usernameHiba.innerText = '';
             username.style.color = "White";
         }
+    });
+
+    document.getElementById('email')?.addEventListener('change', (e) => {
+        let email = e.currentTarget as HTMLInputElement;
+        
     });
 
 

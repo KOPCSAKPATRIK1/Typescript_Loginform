@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             usernameHiba.innerText = '6-30 karakter hosszúságúnak kell lennie';
             usernameHiba.style.color = "Red";
         }
-        else if (isNaN(username.value.charAt(0))) {
-            username.style.color = "Red";
-            usernameHiba.innerText = '6-30 karakter hosszúságúnak kell lennie';
-            usernameHiba.style.color = "Red";
-        }
+        /*
+        else if(isNaN(username.value.charAt(0))) {}
+        */
         else {
             usernameHiba.innerText = '';
             username.style.color = "White";
