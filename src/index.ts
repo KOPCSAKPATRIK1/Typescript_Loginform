@@ -1,8 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
     console.log('Loaded')
+
+    //felhasznalonev
     document.getElementById('username')?.addEventListener('change', (e) => {
         let username = e.currentTarget as HTMLInputElement;
         let usernameHiba = document.getElementById('usernameHiba') as HTMLLabelElement;
@@ -26,14 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
             usernameHiba.style.color = "Red"; 
             console.log('username hiba (rovid/hosszu)');
         }
-        
         else if(/[0-9]/.test(username.value.charAt(0)))
         {
             username.style.color = "Red";
             usernameHiba.innerText = 'Felhasználónév nem kezdőthet számmal';
             usernameHiba.style.color = "Red";
             console.log('username hiba (szammalkezdodik)'); 
-        } 
+        }
+        else if(username.value.charAt(0).includes('.'))
+        {
+            username.style.color = "Red";
+            usernameHiba.innerText = 'Felhasználónév nem kezdőthet .-al';
+            usernameHiba.style.color = "Red";
+            console.log('username hiba (ponttal kezdodik)'); 
+        }
         else
         {
             usernameHiba.innerText = '';
@@ -41,8 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //email
     document.getElementById('email')?.addEventListener('change', (e) => {
         let email = e.currentTarget as HTMLInputElement;
+        let emailHiba = document.getElementById('emailHiba') as HTMLLabelElement;
+
+        if (!email.value.includes('@'))
+        {
+            emailHiba.innerText = '@ karakter kotelező!';
+            emailHiba.style.color = "Red";
+            email.style.color = "Red";
+            console.log('email hiba');
+        }
+        else
+        {//https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
+            emailHiba.innerText = '';
+            email.style.color = "White";
+        }
+
 
     });
 
@@ -50,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('password')?.addEventListener('change', (e) => {
         let password = e.currentTarget as HTMLInputElement;
         let passwordHiba = document.getElementById('passwordHiba') as HTMLLabelElement;
-        let email = document.getElementById('password') as HTMLInputElement;
-        let emailHiba = document.getElementById('emailHiba') as HTMLLabelElement;
 
 
 
